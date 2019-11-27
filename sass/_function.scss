@@ -1,0 +1,33 @@
+//change text color based on a background color
+
+/*
+Designers often choose the text color of an element
+based on the background color. If the background is dark,
+light text is chosen. If the background is light, they use dark text.
+This is because light and dark contrast well with each other and make 
+text easier to read.
+*/
+
+/*
+Here we've used the Sass lightness() function to determine which color
+is more appropriate for a background. The lightness() function is
+a built-in Sass function that returns the lightness of a color's
+RGB value between 0 and 100. Where 0 is the darkest and 100 the lightest.
+
+So in our function we receive a color, and if that color's lightness
+value is greater than 50, meaning it's a light color, we return a dark
+value to ensure a good contrast. Otherwise we return a light color.
+
+http://thesassway.com/intermediate/dynamically-change-text-color-based-on-its-background-with-sass
+https://sass-lang.com/documentation/modules/color#lightness
+
+*/
+
+@function set-text-color($color) {
+    @if(lightness($color) > 50) {
+        @return #000000; // Lighter backgorund, return dark color
+    } @else {
+      @return #ffffff; // Darker background, return light color
+    }
+
+}
